@@ -65,12 +65,11 @@
                  <li>News You our dignified journalist share from their areas around.</li>
                  <li>This is the the post written by a known journalist. It's no more interesting
                         than the first.</li>
-                 <li> {% for comment in comments %}
+                 <li> {% for com in com %}
     <div class="row">
-     {{ comment.content }}
+        {{ com }}
     </div>
-
-                    {% endfor %}
+{% endfor %}
 
                         <form action="." method="POST">
                             <textarea class="form-control" name="contents" placeholder="Write a new article/report"></textarea>
