@@ -28,11 +28,12 @@ app.secret_key = "A nation of sheep will beget a government of wolves."
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-class User(UserMixin):
+class User(UserMixin, db.Model):
+    __tablename__ = "users"
 
-    def __init__(self, username, password_hash):
-        self.username = username
-        self.password_hash = password_hash
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(128))
+    password_hash = db.Column(db.String(128))
 
 
     def check_password(self, password):
@@ -42,15 +43,11 @@ class User(UserMixin):
     def get_id(self):
         return self.username
 
-all_users = {
-    "admin": User("admin", generate_password_hash("secret")),
-    "bob": User("bob", generate_password_hash("less-secret")),
-    "caroline": User("caroline", generate_password_hash("completely-secret")),
-}
+
 
 @login_manager.user_loader
 def load_user(user_id):
-    return all_users.get(user_id)
+    return User.query.filter_by(username=user_id).first()
 
 
 
@@ -59,12 +56,13 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(4096))
+    posted = db.Column(db.DateTime, default=datetime.now)
 
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "GET":
-        return render_template("main_page.html", comments=Comment.query.all(), timestamp=datetime.now())
+        return render_template("main_page.html", comments=Comment.query.all())
     if not current_user.is_authenticated:
         return redirect(url_for('index'))
     comment = Comment(content=request.form["contents"])
@@ -89,10 +87,9 @@ def login():
     if request.method == "GET":
         return render_template("login_page.html", error=False)
 
-    username = request.form["username"]
-    if username not in all_users:
+    user = load_user(request.form["username"])
+    if user is None:
         return render_template("login_page.html", error=True)
-    user = all_users[username]
 
     if not user.check_password(request.form["password"]):
         return render_template("login_page.html", error=True)
