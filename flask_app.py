@@ -2,8 +2,10 @@
 # A very simple Flask Hello World app for you to get started with...
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask import Flask, redirect, render_template, request, url_for
-from flask_login import login_user, LoginManager, UserMixin, logout_user, login_required
+from flask_login import login_user, LoginManager, UserMixin, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
 app = Flask(__name__)
 app.config["DEBUG"] = True
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
@@ -16,7 +18,9 @@ app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+
 db = SQLAlchemy(app)
+
 app.secret_key = "A nation of sheep will beget a government of wolves."
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -46,6 +50,7 @@ def load_user(user_id):
     return all_users.get(user_id)
 
 
+
 class Comment(db.Model):
     __tablename__ = "comments"
 
@@ -56,12 +61,15 @@ class Comment(db.Model):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "GET":
-        return render_template("main_page.html", comments=Comment.query.all())
-
+        return render_template("main_page.html", comments=Comment.query.all(), timestamp=datetime.now())
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
     comment = Comment(content=request.form["contents"])
     db.session.add(comment)
     db.session.commit()
     return redirect(url_for('index'))
+
+
 comme = []
 
 @app.route("/review/", methods=["GET", "POST"])
