@@ -38,7 +38,11 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+        {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('logout') }}">Log out</a></li>
+        {% else %}
+            <li><a href="{{ url_for('login') }}">Log in</a></li>
+        {% endif %}
         </li>
         <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -71,13 +75,13 @@
     </div>
 
                     {% endfor %}
-
+{% if current_user.is_authenticated %}
                         <form action="." method="POST">
                             <textarea class="form-control" name="contents" placeholder="Write a new article/report"></textarea>
                             <input type="submit" class="btn btn-success" value="Submit latest News"><i
                                 class="bi bi-arrow-right-square-fill"></i>
                         </form></li>
-
+{% endif %}
      </ul>
      </div>
     </div>
