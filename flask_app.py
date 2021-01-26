@@ -35,7 +35,7 @@ def index():
     return redirect(url_for('index'))
 comme = []
 
-@app.route("/review", methods=["GET", "POST"])
+@app.route("/review/", methods=["GET", "POST"])
 def review():
     if request.method == "GET":
         return render_template("review.html", comme=comme)
@@ -44,6 +44,10 @@ def review():
     return redirect(url_for('review'))
 
 
-@app.route("/login/")
+@app.route("/login/", methods=["GET", "POST"])
 def login():
-    return render_template("login_page.html")
+    if request.method=="GET":
+        return render_template("login_page.html", error=False)
+    if request.form["username"]!="shaswat" or request.form["password"]!="anand":
+        return render_template("login_page.html", error=True)
+    return redirect(url_for('index'))
