@@ -5,6 +5,8 @@ from flask import Flask, redirect, render_template, request, url_for
 from flask_login import login_user, LoginManager, UserMixin, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_migrate import Migrate
+
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -20,6 +22,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 app.secret_key = "A nation of sheep will beget a government of wolves."
 login_manager = LoginManager()
