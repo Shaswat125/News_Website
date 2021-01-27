@@ -61,20 +61,22 @@
     </div>
 
 
+  <div class="container lead news">
+     <figure class="text-center">
+  <blockquote class="blockquote container">
+    <p>News You our dignified journalist share from their areas around. This is the the post written by a known journalist. It's no more interesting
+    than the first.</p>
+  </blockquote>
+
+
     <div class="news container">
-        <div class="row">
-      <ul type="null">
-
-
-                 <li>News You our dignified journalist share from their areas around.</li>
-                 <li>This is the the post written by a known journalist. It's no more interesting
-                        than the first.</li>
-                 <li> {% for comment in comments %}
+     <h6>
+     <div class="row">
+     {% for comment in comments %}
         </div>
     <div class="row">
      {{ comment.content }}
     </div>
-    <div>
     <small>
         Posted
         {% if comment.posted %}
@@ -89,20 +91,21 @@
         anonymous
         {% endif %}
     </small>
-                </div>
 
                     {% endfor %}
 {% if current_user.is_authenticated %}
                         <form action="." method="POST">
                             <textarea class="form-control" name="contents" placeholder="Write a new article/report"></textarea>
-                            <input type="submit" class="btn btn-success" value="Submit latest News"><i
-                                class="bi bi-arrow-right-square-fill"></i>
-                        </form></li>
+                            <input type="submit" class="btn btn-success" value="Submit latest News">
+                        </form>
 {% endif %}
-     </ul>
      </div>
     </div>
   </div>
+  </h6>
+</figure>
+    </div>
+
 
     <div class="container overflow-hidden rounded">
         <div class="row gy-5">
