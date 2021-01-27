@@ -11,7 +11,7 @@
 </head>
 
 <body id="bgmy">
-    <nav class="nav nav-pills baby">
+    <nav class="nav nav-pills baby fixed-top">
     <ul class="nav nav-pills" id="lup">
         <li class="nav-item cdr">
             <a class="nav-link active hover cdr" aria-current="page" href="#">Home</a>
@@ -20,23 +20,20 @@
             <a class="nav-link dropdown-toggle cdr " data-bs-toggle="dropdown" href="#" role="button"
                 aria-expanded="false">Services</a>
             <ul class="dropdown-menu">
-                <div class="dropdown">About
-                    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                        <span class="caret">Inquiry Form</span>
-                    </button>
-                    <ul class="dropdown-menu cdr" aria-labelledby="dLabel">
-                        Search
-                    </ul>
-                </div>
 
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li>
+                <li><a class="dark dropdown-item" aria-current="page" href="https://shaswatanand.pythonanywhere.com/review/">Review & Comment</a></li>
+                <li><a class="dropdown-item" aria-current="page" href="https://shaswatanand.pythonanywhere.com/news/" >More News</a></li>
+                   <li>
                     <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </li>
+                     <li class="dropdown-item">
+        {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('logout') }}" class="dropdown-item">Log out</a></li>
+        {% else %}
+            <li><a href="{{ url_for('login') }}" class="dropdown-item">Log in</a></li>
+        {% endif %}
+        </li>
             </ul>
         </li>
         <li class="nav-item cdr">
@@ -47,24 +44,25 @@
         {% endif %}
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Sign Up</a>
         </li>
     </ul>
     </nav>
 
-     <div class="container">
-  <div class="row">
-    <div class="col">
-     <figure class="mywy">
+     <div class="container lead wdh">
+     <figure class="text-center">
   <blockquote class="blockquote container">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <p>If you were born with the ability to change someone’s perspective or emotions, never waste that gift. It is one of the most powerful gifts God can give—the ability to influence..</p>
   </blockquote>
   <figcaption class="blockquote-footer">
-    Someone famous in <cite title="Source Title">Source Title</cite>
+      Shannon L. Alder
   </figcaption>
 </figure>
     </div>
-    <div class="col news container">
+
+
+    <div class="news container">
+        <div class="row">
       <ul type="null">
 
 
@@ -72,6 +70,7 @@
                  <li>This is the the post written by a known journalist. It's no more interesting
                         than the first.</li>
                  <li> {% for comment in comments %}
+        </div>
     <div class="row">
      {{ comment.content }}
     </div>

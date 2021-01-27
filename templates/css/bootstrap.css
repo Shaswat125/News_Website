@@ -54,6 +54,11 @@
 .cdr:hover{
     color: #99FD66;
 }
+.wdh{
+    margin:3rem;
+    padding:1rem;
+    width:80%;
+}
 .mywy{
     font-size:2rem;
     width:60%;
