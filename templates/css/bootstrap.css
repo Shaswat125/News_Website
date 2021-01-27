@@ -45,9 +45,14 @@
 .baby{
     position:fixed;
     z-index:100;
+
 }
-.baby:hover{
-    color: pink;
+.cdr{
+    color:  white;
+
+}
+.cdr:hover{
+    color: #99FD66;
 }
 .mywy{
     font-size:2rem;

@@ -11,12 +11,13 @@
 </head>
 
 <body id="bgmy">
-    <ul class="nav nav-pills baby" id="lup">
-        <li class="nav-item">
-            <a class="nav-link active hover" aria-current="page" href="#">Home</a>
+    <nav class="nav nav-pills baby">
+    <ul class="nav nav-pills" id="lup">
+        <li class="nav-item cdr">
+            <a class="nav-link active hover cdr" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle " data-bs-toggle="dropdown" href="#" role="button"
+        <li class="nav-item dropdown cdr">
+            <a class="nav-link dropdown-toggle cdr " data-bs-toggle="dropdown" href="#" role="button"
                 aria-expanded="false">Services</a>
             <ul class="dropdown-menu">
                 <div class="dropdown">About
@@ -24,10 +25,11 @@
 
                         <span class="caret">Inquiry Form</span>
                     </button>
-                    <ul class="dropdown-menu baby" aria-labelledby="dLabel">
+                    <ul class="dropdown-menu cdr" aria-labelledby="dLabel">
                         Search
                     </ul>
                 </div>
+
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -37,11 +39,11 @@
                 <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </li>
-        <li class="nav-item">
+        <li class="nav-item cdr">
         {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('logout') }}">Log out</a></li>
+            <li><a href="{{ url_for('logout') }}" class="nav-link cdr">Log out</a></li>
         {% else %}
-            <li><a href="{{ url_for('login') }}">Log in</a></li>
+            <li><a href="{{ url_for('login') }}" class="nav-link cdr">Log in</a></li>
         {% endif %}
         </li>
         <li class="nav-item">
@@ -81,7 +83,12 @@
         {% else %}
             at an unknown time
         {% endif %}
-        by anonymous
+        by
+        {% if comment.commenter %}
+        {{ comment.commenter.username }}
+        {% else %}
+        anonymous
+        {% endif %}
     </small>
                 </div>
 
