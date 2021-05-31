@@ -11,7 +11,7 @@
     <nav class="nav nav-pills baby fixed-top">
     <ul class="nav nav-pills" id="lup">
         <li class="nav-item cdr">
-            <a class="nav-link active hover cdr" aria-current="page" href="#">Home</a>
+            <a class="nav-link active hover cdr" aria-current="page" href="#">More News</a>
         </li>
         <li class="nav-item dropdown cdr">
             <a class="nav-link dropdown-toggle cdr " data-bs-toggle="dropdown" href="#" role="button"
@@ -57,52 +57,212 @@
 </figure>
     </div>
 
-
-  <div class="container lead cdr">
-     <figure class="text-center">
-  <blockquote class="blockquote container text-center">
-    <p>Our dignified journalists are requested to share their local reports here. This data will be stored in our database and will be reflected in this page so they are requested to post responsibly.
-    The dialog for posting will only be seen to them who have already logged in. To get registred and post kindly contact the admininstrator of the website.
-     <div class="row">
-     {% for comment in comments %}
-        </div>
-    <div class="row">
-     {{ comment.content }}
-    </div>
-    <small>
-        Posted
-        {% if comment.posted %}
-            {{ comment.posted.strftime("%A, %d %B %Y at %H:%M") }}
-        {% else %}
-            at an unknown time
-        {% endif %}
-        by
-        {% if comment.commenter %}
-        {{ comment.commenter.username }}
-        {% else %}
-        anonymous
-        {% endif %}
-    </small>
-        {% endfor %}
-{% if current_user.is_authenticated %}
-    <form action="." method="POST" class="text-center">
-        <textarea class="form-control text-center" name="contents" placeholder="Write a new article/report"></textarea>
-        <input type="submit" class="btn btn-success text-center" value="Submit latest News">
-    </form>
-{% endif %}
-     </p>
-  </blockquote>
-  </figure>
-    </div>
-
 <figure class="text-center lead cdr">
-    <p>But you still comment without logging in from services or the tab below.</p>
+    <p>This page has news from all the domains and servers.</p>
     <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-primary"> <a class="dropdown-item" aria-current="page" href="https://shaswatanand.pythonanywhere.com/news/" >More News</a></button>
-        <button type="button" class="btn btn-primary">Home</button>
+        <button type="button" class="btn btn-primary"><a class="dark dropdown-item" aria-current="page" href="https://shaswatanand.pythonanywhere.com">Home</a></button>
         <button type="button" class="btn btn-primary"><a class="dark dropdown-item" aria-current="page" href="https://shaswatanand.pythonanywhere.com/review/">Review & Comment</a></button>
         </div>
 </figure>
+  <div class="container overflow-hidden rounded">
+        <div class="row gy-5">
+    <div class="col container">
+<!-- start sw-rss-feed code -->
+<script type="text/javascript">
+<!--
+rssfeed_url = new Array();
+rssfeed_url[0]="https://www.indiatoday.in/rss/1206578";
+rssfeed_frame_width="450";
+rssfeed_frame_height="450";
+rssfeed_scroll="on";
+rssfeed_scroll_step="6";
+rssfeed_scroll_bar="off";
+rssfeed_target="_blank";
+rssfeed_font_size="12";
+rssfeed_font_face="";
+rssfeed_border="on";
+rssfeed_css_url="";
+rssfeed_title="on";
+rssfeed_title_name="";
+rssfeed_title_bgcolor="#3366ff";
+rssfeed_title_color="#fff";
+rssfeed_title_bgimage="";
+rssfeed_footer="off";
+rssfeed_footer_name="rss feed";
+rssfeed_footer_bgcolor="#99cc00";
+rssfeed_footer_color="#333";
+rssfeed_footer_bgimage="";
+rssfeed_item_title_length="80";
+rssfeed_item_title_color="#000";
+rssfeed_item_bgcolor="#fff";
+rssfeed_item_bgimage="";
+rssfeed_item_border_bottom="on";
+rssfeed_item_source_icon="off";
+rssfeed_item_date="off";
+rssfeed_item_description="on";
+rssfeed_item_description_length="150";
+rssfeed_item_description_color="#666";
+rssfeed_item_description_link_color="#333";
+rssfeed_item_description_tag="off";
+rssfeed_no_items="0";
+rssfeed_cache = "98a1de4090f786bd97eb4cd8880e9530";
+//-->
+</script>
+<script type="text/javascript" src="//feed.surfing-waves.com/js/rss-feed.js"></script>
+</div>
+
+<div class="col container"><!-- start sw-rss-feed code -->
+<!-- start sw-rss-feed code -->
+<script type="text/javascript">
+<!--
+rssfeed_url = new Array();
+rssfeed_url[0]="https://indianexpress.com/feed/";
+rssfeed_frame_width="450";
+rssfeed_frame_height="450";
+rssfeed_scroll="on";
+rssfeed_scroll_step="6";
+rssfeed_scroll_bar="off";
+rssfeed_target="_blank";
+rssfeed_font_size="12";
+rssfeed_font_face="";
+rssfeed_border="on";
+rssfeed_css_url="";
+rssfeed_title="on";
+rssfeed_title_name="";
+rssfeed_title_bgcolor="#3366ff";
+rssfeed_title_color="#fff";
+rssfeed_title_bgimage="";
+rssfeed_footer="off";
+rssfeed_footer_name="rss feed";
+rssfeed_footer_bgcolor="#fff";
+rssfeed_footer_color="#333";
+rssfeed_footer_bgimage="";
+rssfeed_item_title_length="50";
+rssfeed_item_title_color="#666";
+rssfeed_item_bgcolor="#fff";
+rssfeed_item_bgimage="";
+rssfeed_item_border_bottom="on";
+rssfeed_item_source_icon="off";
+rssfeed_item_date="off";
+rssfeed_item_description="on";
+rssfeed_item_description_length="120";
+rssfeed_item_description_color="#666";
+rssfeed_item_description_link_color="#333";
+rssfeed_item_description_tag="off";
+rssfeed_no_items="0";
+rssfeed_cache = "438a43134ae4cf81b5b93cb6d193fbf6";
+//-->
+</script>
+<script type="text/javascript" src="//feed.surfing-waves.com/js/rss-feed.js"></script>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="container overflow-hidden rounded">
+        <div class="row gy-5">
+    <div class="col container">
+<!-- start sw-rss-feed code -->
+<script type="text/javascript">
+<!--
+rssfeed_url = new Array();
+rssfeed_url[0]="https://www.deccanchronicle.com/rss_feed/";
+rssfeed_frame_width="450";
+rssfeed_frame_height="450";
+rssfeed_scroll="on";
+rssfeed_scroll_step="6";
+rssfeed_scroll_bar="off";
+rssfeed_target="_blank";
+rssfeed_font_size="12";
+rssfeed_font_face="";
+rssfeed_border="on";
+rssfeed_css_url="https://feed.surfing-waves.com/css/style5.css";
+rssfeed_title="on";
+rssfeed_title_name="";
+rssfeed_title_bgcolor="#3366ff";
+rssfeed_title_color="#fff";
+rssfeed_title_bgimage="";
+rssfeed_footer="off";
+rssfeed_footer_name="rss feed";
+rssfeed_footer_bgcolor="#fff";
+rssfeed_footer_color="#333";
+rssfeed_footer_bgimage="";
+rssfeed_item_title_length="80";
+rssfeed_item_title_color="#666";
+rssfeed_item_bgcolor="#fff";
+rssfeed_item_bgimage="";
+rssfeed_item_border_bottom="on";
+rssfeed_item_source_icon="off";
+rssfeed_item_date="off";
+rssfeed_item_description="on";
+rssfeed_item_description_length="150";
+rssfeed_item_description_color="#666";
+rssfeed_item_description_link_color="#333";
+rssfeed_item_description_tag="off";
+rssfeed_no_items="0";
+rssfeed_cache = "56053096815b6bc67ee49015bffac664";
+//-->
+</script>
+<script type="text/javascript" src="//feed.surfing-waves.com/js/rss-feed.js"></script>
+</div>
+
+<div class="col container"><!-- start sw-rss-feed code -->
+<!-- start sw-rss-feed code -->
+<script type="text/javascript">
+<!--
+rssfeed_url = new Array();
+rssfeed_url[0]="https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/section/world/rss.xml";
+rssfeed_frame_width="450";
+rssfeed_frame_height="450";
+rssfeed_scroll="on";
+rssfeed_scroll_step="6";
+rssfeed_scroll_bar="off";
+rssfeed_target="_blank";
+rssfeed_font_size="12";
+rssfeed_font_face="";
+rssfeed_border="on";
+rssfeed_css_url="https://feed.surfing-waves.com/css/style5.css";
+rssfeed_title="on";
+rssfeed_title_name="";
+rssfeed_title_bgcolor="#3366ff";
+rssfeed_title_color="#fff";
+rssfeed_title_bgimage="";
+rssfeed_footer="on";
+rssfeed_footer_name="rss feed";
+rssfeed_footer_bgcolor="#fff";
+rssfeed_footer_color="#333";
+rssfeed_footer_bgimage="";
+rssfeed_item_title_length="80";
+rssfeed_item_title_color="#666";
+rssfeed_item_bgcolor="#fff";
+rssfeed_item_bgimage="";
+rssfeed_item_border_bottom="on";
+rssfeed_item_source_icon="off";
+rssfeed_item_date="off";
+rssfeed_item_description="on";
+rssfeed_item_description_length="150";
+rssfeed_item_description_color="#666";
+rssfeed_item_description_link_color="#333";
+rssfeed_item_description_tag="off";
+rssfeed_no_items="0";
+rssfeed_cache = "4c11ed087141dd557d546c71981bacf5";
+//-->
+</script>
+<script type="text/javascript" src="//feed.surfing-waves.com/js/rss-feed.js"></script>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 
 
     <div class="container overflow-hidden rounded">
@@ -197,47 +357,6 @@ rssfeed_cache = "b76ab19531250e4d6700692efd967ee9";
     </div>
 </div>
 
-
-
-
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
-            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/img/lo.jpg"
-                    class="d-block w-100 h-50 rounded-pill" alt="Fake news is cheap to produce.">
-                <div class="carousel-caption d-none d-md-block">
-                    <p>A nation of sheep will beget a government of wolves.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/img/je.jpg"
-                    class="d-block w-100 h-50 rounded-pill" alt="Genuine journalism is expensive.">
-                <div class="carousel-caption d-none d-md-block">
-                    <p>A good newspaper, I suppose, is a nation talking to itself.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/img/to.jpg"
-                    class="d-block w-100 h-50 rounded-pill" alt="News travels fast in places where nothing much ever happens.">
-                <div class="carousel-caption d-none d-md-block">
-                    <p>Our major obligation is not to mistake slogans for solutions.</p>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </a>
-    </div>
 
 
 

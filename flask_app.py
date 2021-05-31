@@ -8,7 +8,9 @@ from datetime import datetime
 from flask_migrate import Migrate
 
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_url_path='',
+            static_folder='/home/SHASWATANAND/static')
 app.config["DEBUG"] = True
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
     username="SHASWATANAND",
@@ -72,6 +74,10 @@ def review():
 
     comme.append(request.form["contents"])
     return redirect(url_for('review'))
+
+@app.route('/news/')
+def news():
+    return render_template("news.html")
 
 
 @app.route("/login/", methods=["GET", "POST"])
