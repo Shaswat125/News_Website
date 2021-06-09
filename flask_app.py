@@ -1,5 +1,3 @@
-
-# A very simple Flask Hello World app for you to get started with...
 from werkzeug.security import check_password_hash
 from flask import Flask, redirect, render_template, request, url_for
 from flask_login import login_user, LoginManager, UserMixin, logout_user, login_required, current_user
@@ -11,13 +9,19 @@ from flask_migrate import Migrate
 app = Flask(__name__,
             static_url_path='',
             static_folder='/home/SHASWATANAND/static')
+
+
 app.config["DEBUG"] = True
+
+
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
     username="SHASWATANAND",
     password="renamemeforlife",
     hostname="SHASWATANAND.mysql.pythonanywhere-services.com",
     databasename="SHASWATANAND$comments",
 )
+
+
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -30,19 +34,27 @@ app.secret_key = "A nation of sheep will beget a government of wolves."
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+
 class User(UserMixin, db.Model):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(128))
     password_hash = db.Column(db.String(128))
+
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
     def get_id(self):
         return self.username
 
+
+
 @login_manager.user_loader
+
+
 def load_user(user_id):
     return User.query.filter_by(username=user_id).first()
+
 
 class Comment(db.Model):
     __tablename__ = "comments"
@@ -54,6 +66,8 @@ class Comment(db.Model):
 
 
 @app.route("/", methods=["GET", "POST"])
+
+
 def index():
     if request.method == "GET":
         return render_template("main_page.html", comments=Comment.query.all())
@@ -67,6 +81,7 @@ def index():
 
 comme = []
 
+
 @app.route("/review/", methods=["GET", "POST"])
 def review():
     if request.method == "GET":
@@ -75,12 +90,14 @@ def review():
     comme.append(request.form["contents"])
     return redirect(url_for('review'))
 
+
 @app.route('/news/')
 def news():
     return render_template("news.html")
 
 
 @app.route("/login/", methods=["GET", "POST"])
+
 def login():
     if request.method == "GET":
         return render_template("login_page.html", error=False)
@@ -92,8 +109,12 @@ def login():
     login_user(user)
     return redirect(url_for('index'))
 
+
 @app.route("/logout/")
+
 @login_required
+
+
 def logout():
     logout_user()
     return redirect(url_for('index'))
