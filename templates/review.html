@@ -61,8 +61,9 @@
 
  <div class="container lead cdr">
      <figure class="text-center">
+         <div id="mick" class="container lead cdr"></div>
   <blockquote class="blockquote container text-center">
-    <p> We can comment or review news items here. You can write your own view on the news article without even logging in. These comments will disappear over a period of time so you don't need to worry.
+    <p> You can comment upon or review news items here. You can write your own view on the news article without even logging in. These comments will disappear over a period of time so you don't need to worry.
 </p>
                 {% for comment in comme %}
                 <div class="row">
@@ -91,7 +92,7 @@
 <script type="text/javascript">
 rssfeed_url = new Array();
 rssfeed_url[0]="https://www.thehindu.com/feeder/default.rss";
-rssfeed_frame_width="450";
+rssfeed_frame_width="400";
 rssfeed_frame_height="450";
 rssfeed_scroll="on";
 rssfeed_scroll_step="6";
@@ -148,8 +149,16 @@ rssfeed_cache = "b76ab19531250e4d6700692efd967ee9";
         </div>
 </figure>
 
+ <div class="bg-light text-center text-secondary">
+        &copy; &nbsp;&nbsp;Shaswat Anand
+      </div>
+
+<script>
+    let name=prompt("What is your name?","Anonymous");
+    document.getElementById('mick').innerHTML="Hello "+name;
 
 
+</script>
    <script src="/js/bootstrap.js" ></script>
 <script src="/js/bootstrap.min.js" ></script>
   <script src="/js/bootstrap.bundle.js" ></script>
